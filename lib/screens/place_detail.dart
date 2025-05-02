@@ -11,18 +11,21 @@ class PlaceDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(place.title)),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(place.title, style: Theme.of(context).textTheme.titleLarge),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('Back'),
+            Image.file(
+              place.image!,
+              width: double.infinity,
+              height: 250,
+              fit: BoxFit.cover,
             ),
+            const SizedBox(height: 10),
+            // Text(
+            //   place.location!.address,
+            //   textAlign: TextAlign.center,
+            //   style: const TextStyle(fontSize: 20),
+            // ),
           ],
         ),
       ),
