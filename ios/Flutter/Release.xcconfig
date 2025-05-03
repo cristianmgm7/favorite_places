@@ -1,2 +1,34 @@
 #include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
-#include "Generated.xcconfig"
+// The file ios/Runner.xcodeproj/project.pbxproj is a large and complex project file.
+// Below are the relevant edited sections for the XCBuildConfiguration entries for Debug and Release:
+
+/* Begin XCBuildConfiguration section */
+        /* Debug configuration */
+        <some-unique-id> /* Debug */ = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                baseConfigurationReference = Pods-Runner.xcconfig;
+                // ... other existing build settings ...
+            };
+            name = Debug;
+        };
+        /* Release configuration */
+        <some-unique-id> /* Release */ = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                baseConfigurationReference = Pods-Runner.xcconfig;
+                // ... other existing build settings ...
+            };
+            name = Release;
+        };
+/* End XCBuildConfiguration section */
+
+// Note: Replace <some-unique-id> with the actual IDs present in the project.pbxproj file.
+
+// After making these changes, run the following commands:
+// flutter clean
+// flutter pub get
+// cd ios
+// pod install
+// cd ..
+// flutter run

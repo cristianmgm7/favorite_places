@@ -22,6 +22,8 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
+  LatLng? pickedLocation;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +31,12 @@ class _MapScreenState extends State<MapScreen> {
         title: Text(widget.isSelecting ? 'Pick a Location' : 'Your Location'),
         actions: [
           if (widget.isSelecting)
-            IconButton(icon: const Icon(Icons.check), onPressed: () {}),
+            IconButton(
+              icon: const Icon(Icons.check),
+              onPressed: () {
+                Navigator.of(context).pop(pickedLocation);
+              },
+            ),
         ],
       ),
       body: GoogleMap(
@@ -38,26 +45,25 @@ class _MapScreenState extends State<MapScreen> {
           zoom: 13,
         ),
         onTap:
-            widget.isSelecting
-                ? (latLng) {
-                  Navigator.of(context).pop(
-                    PlaceLocation(
-                      latitude: latLng.latitude,
-                      longitude: latLng.longitude,
-                    ),
-                  );
-                }
-                : null,
+            !widget.isSelecting
+                ? null
+                : (latLng) {
+                  setState(() {
+                    pickedLocation = latLng;
+                  });
+                },
         markers:
-            widget.isSelecting
+            (pickedLocation == null && widget.isSelecting)
                 ? {}
                 : {
                   Marker(
                     markerId: const MarkerId('m1'),
-                    position: LatLng(
-                      widget.location.latitude,
-                      widget.location.longitude,
-                    ),
+                    position:
+                        pickedLocation ??
+                        LatLng(
+                          pickedLocation!.latitude,
+                          pickedLocation!.longitude,
+                        ),
                   ),
                 },
       ),

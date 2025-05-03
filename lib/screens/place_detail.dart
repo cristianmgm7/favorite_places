@@ -57,10 +57,7 @@ class PlaceDetailScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      colors: [
-                        Colors.transparent,
-                        Colors.black54.withOpacity(0.9),
-                      ],
+                      colors: [Colors.transparent, Colors.black54.withValues()],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                     ),
