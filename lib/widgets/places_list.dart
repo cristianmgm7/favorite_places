@@ -24,6 +24,10 @@ class PlacesList extends StatelessWidget {
             places[index].title,
             style: Theme.of(context).textTheme.titleMedium,
           ),
+          subtitle: Text(
+            places[index].location?.address ?? '',
+            style: Theme.of(context).textTheme.titleSmall,
+          ),
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(

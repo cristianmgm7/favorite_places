@@ -3,6 +3,8 @@
         android:label="favorite_paces"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyAY6g4lejOb7raX521cRstMzzMG9SisSkg"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
